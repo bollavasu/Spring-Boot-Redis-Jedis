@@ -1,0 +1,35 @@
+
+We need the following for Jedis Redis client
+
+1)we need to exclude the Lettuce dependency and add the Jedis dependency in pom
+
+      <!-- exclude Lettuce dependency -->
+      <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-data-redis</artifactId>
+		  <exclusions>
+			<exclusion>
+			 <groupId>io.lettuce</groupId>
+			 <artifactId>lettuce-core</artifactId>
+			</exclusion>
+		  </exclusions>	
+      </dependency>	
+	  <!-- add Jedis dependency -->
+	  <dependency>
+		  <groupId>redis.clients</groupId>
+		  <artifactId>jedis</artifactId>
+	  </dependency> 
+
+2)Jedis connection pool details are mentioned in application.properties
+
+3)we need RedisConfiguration.java to configure JedisConnectionFactory and RedisTemplate
+
+
+  
+  
+mvn clean install
+
+mvn spring-boot:run
+
+http://localhost:8080/
+
